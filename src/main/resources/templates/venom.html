@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="venom">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration | Cosmic Cube</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/css/style.css}">
+</head>
+
+<body class="loginpage">
+    <header>
+        <h1 class="Logo1">COSMIC CUBE</h1>
+        <nav class="navigation">
+            <a href="#" onclick="alert('Login First!'); return false;">Home</a>
+            <a href="#" onclick="alert('Login First!'); return false;">About</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+    
+    <div class="wrapper">
+        <span class="icon-close">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+
+        <!-- Login Form -->
+        <div class="form-box Login">
+            <h2 style="color: black;">Hello Student!</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" id="username" name="username" required>
+                    <label style="color: whitesmoke;">Email</label>
+                </div> 
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" id="password" name="password" required>
+                    <label style="color: whitesmoke;">Password</label> 
+                </div>
+                <br>
+
+                <!-- Display error message if login fails -->
+                <div th:if="${error}" style="color: red;">
+                    <p th:text="${error}"></p>
+                </div>
+                
+                <button type="submit" class="btn1" style="color: black;">Login</button>
+                <br>
+
+                <div class="login-register">
+                    <p style="color: whitesmoke;">Don't have an Account? <a href="#" class="register-link" style="color:orange">Register</a></p>
+                </div>
+            </form>
+        </div> 
+
+        <!-- Registration Form -->
+        <div class="form-box register">
+            <h2 style="color: black;">Registration</h2>
+            <br>
+            <h3 style="color: black;">Use SRM Email id & Password for Registration</h3>
+            <form th:action="@{/register}" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label style="color: whitesmoke;">Username</label>
+                </div> 
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label style="color: whitesmoke;">Email</label>
+                </div> 
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label style="color: whitesmoke;">Password</label> 
+                </div> 
+                <div class="remember-forget">
+                    <label style="color: whitesmoke;">
+                        <input type="checkbox" required> I agree to the terms & conditions
+                    </label>
+                </div> 
+                
+                <button type="submit" class="btn1" style="color: black;">Register</button> 
+                <div class="login-register">
+                    <p style="color: whitesmoke;">Already have an account? <a href="#" class="login-link" style="color:orange">Login</a></p>
+                </div>
+            </form>
+        </div> 
+    </div>
+
+    <script src="script.js" th:src="@{/js/script.js}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
